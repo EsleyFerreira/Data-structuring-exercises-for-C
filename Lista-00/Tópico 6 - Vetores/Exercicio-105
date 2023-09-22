@@ -1,0 +1,97 @@
+#include <stdio.h>
+
+int main() {
+  int x[5];
+  int y[5];
+  int soma[5];
+  int produto[5];
+  int diferenca[5];
+  int intersecao[5];
+  int uniao[10];
+  int contadorUniao = 0;
+
+  printf("Digite 5 valores para o vetor x:\n");
+  for (int i = 0; i < 5; i++) {
+    printf("Digite o valor %d: ", i + 1);
+    scanf("%d", &x[i]);
+  }
+
+  printf("Digite 5 valores para o vetor y:\n");
+  for (int i = 0; i < 5; i++) {
+    printf("Digite o valor %d: ", i + 1);
+    scanf("%d", &y[i]);
+  }
+
+  for (int i = 0; i < 5; i++) {
+    soma[i] = x[i] + y[i];
+    produto[i] = x[i] * y[i];
+
+    diferenca[i] = x[i];
+    for (int j = 0; j < 5; j++) {
+      if (x[i] == y[j]) {
+        diferenca[i] = 0;
+        break;
+      }
+    }
+
+    intersecao[i] = 0;
+    for (int j = 0; j < 5; j++) {
+      if (x[i] == y[j]) {
+        intersecao[i] = x[i];
+        break;
+      }
+    }
+  }
+
+  for (int i = 0; i < 5; i++) {
+    uniao[contadorUniao++] = x[i];
+  }
+  for (int i = 0; i < 5; i++) {
+    int pertence = 0;
+    for (int j = 0; j < 5; j++) {
+      if (y[i] == x[j]) {
+        pertence = 1;
+        break;
+      }
+    }
+    if (!pertence) {
+      uniao[contadorUniao++] = y[i];
+    }
+  }
+
+  printf("Soma entre x e y: ");
+  for (int i = 0; i < 5; i++) {
+    printf("%d ", soma[i]);
+  }
+  printf("\n");
+
+  printf("Produto entre x e y: ");
+  for (int i = 0; i < 5; i++) {
+    printf("%d ", produto[i]);
+  }
+  printf("\n");
+
+  printf("Diferença entre x e y: ");
+  for (int i = 0; i < 5; i++) {
+    if (diferenca[i] != 0) {
+      printf("%d ", diferenca[i]);
+    }
+  }
+  printf("\n");
+
+  printf("Interseção entre x e y: ");
+  for (int i = 0; i < 5; i++) {
+    if (intersecao[i] != 0) {
+      printf("%d ", intersecao[i]);
+    }
+  }
+  printf("\n");
+
+  printf("União entre x e y: ");
+  for (int i = 0; i < contadorUniao; i++) {
+    printf("%d ", uniao[i]);
+  }
+  printf("\n");
+
+  return 0;
+}
