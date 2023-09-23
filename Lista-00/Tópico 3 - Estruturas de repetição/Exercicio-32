@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int calcularMDC(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+int main() {
+    int num1, num2;
+
+    while (1) {
+        printf("Digite o primeiro número (ou 0 para sair): ");
+        scanf("%d", &num1);
+        if (num1 == 0) {
+            break;
+        }
+
+        printf("Digite o segundo número (ou 0 para sair): ");
+        scanf("%d", &num2);
+        if (num2 == 0) {
+            break;
+        }
+
+        int mdc = calcularMDC(num1, num2);
+        printf("O MDC de %d e %d é %d\n", num1, num2, mdc);
+    }
+return 0;
+}
