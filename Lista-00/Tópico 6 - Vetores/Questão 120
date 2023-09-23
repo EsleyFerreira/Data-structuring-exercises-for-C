@@ -1,0 +1,75 @@
+#include <stdio.h>
+int main(){
+  int escolha, pes = 0,ruimm = 0,boa = 0, maior, maior_ruim, maior_otimo;
+  int otimo, bom, regular, ruim, pessimo, idadepessimo[20], idaderuim[20], idadeotimo[20];
+  float perc, media2, mediaid, porc;
+
+  for(int p = 0; p <20; p++){
+    printf("Olá, por favor responda este questionário sobre o filme\n");
+    printf("Digite 1 se sua resposta sobre o filme for otimo\n");
+    printf("Digite 2 se sua resposta sobre o filme for bom\n");
+    printf("Digite 3 se sua resposta sobre o filme for regular\n");
+    printf("Digite 4 se sua resposta sobre o filme for ruim\n");
+    printf("Digite 5 se sua resposta sobre o filme for pessimo\n");
+    scanf("%d", &escolha);
+  
+    switch (escolha){
+      case 1:
+        otimo += 1;
+        printf("digite sua idade: ");
+        scanf("%d", &idadeotimo[boa]);
+        boa++;
+        break;
+      case 2:
+        bom += 1;
+        break;
+      case 3:
+        regular += 1;
+        break;
+      case 4:
+        ruim += 1;
+        printf("digite sua idade: ");
+        scanf("%d", &idaderuim[ruimm]);
+        ruimm++;
+        break;
+      case 5:
+        pessimo += 1;
+        printf("digite sua idade: ");
+        scanf("%d", &idadepessimo[pes]);
+        pes++;
+        break;
+      default:
+        printf("Resposta inválida!");
+    }
+    
+  }
+  for(int i = 0; i < ruim; i++){
+    mediaid = mediaid + idaderuim[i];
+  }
+  mediaid = mediaid / ruim;
+  perc = bom / regular;
+  porc = pessimo / 20;
+  for(int i = 0; i < pessimo; i++){
+    if(idadepessimo[i] > maior){
+      maior += idadepessimo[i];
+    }
+  }
+  for(int i = 0; i < otimo; i++){
+    if(idadeotimo[i] > maior){
+      maior_otimo += idadeotimo[i];
+    }
+  }
+  for(int i = 0; i < ruim; i++){
+    if(idaderuim[i] > maior){
+      maior_ruim += idaderuim[i];
+    }
+  }
+  media2 = maior_ruim - maior_otimo ;
+  
+  printf("A quantidade de respostas ótimo é: %d\n",otimo);
+  printf("A diferença percentual entre respostas bom e regular é: %.2f %\n",perc);
+  printf("A média de idade de pessoas que responderam ruim é: %f\n", mediaid);
+  printf("A porcentagem de respostas péssimo é: %f e a maior idade que utilizou esta opção é: %d\n",porc,maior);
+  printf("A diferença de idade entre a maior idade que respondeu ótimo e a maior idade que respondeu ruim é: %f\n",media2);
+  return 0;
+}
