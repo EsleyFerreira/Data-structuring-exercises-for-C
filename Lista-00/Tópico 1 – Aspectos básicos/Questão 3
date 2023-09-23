@@ -1,0 +1,9 @@
+#include <stdio.h>
+
+int main() {
+
+for(int p = 1; p < 20; p++)
+    printf("Eu gosto de estudar algoritmos\n.");
+  
+  return 0;
+}
