@@ -1,0 +1,70 @@
+#include <stdio.h>
+
+int main() {
+
+    int numeros [50];
+    int numero ;
+    int maior_seq = 0 ;
+    int seq_atual = 0 ;
+    int seq_cres [50];
+    int cresatual[50];
+    int i = 0 ;
+    
+    printf("Digite uma sequência de números inteiros positivos.(Para encerrar o programa digite um número 0 ou negativo) \n");
+
+    while(1){
+        
+        printf("Digite um número:\n");
+        scanf("%d" , &numero);
+        
+        if (numero <= 0 ) {
+            break;
+        }
+        numeros [i] = numero ;
+        i++ ;
+        
+        if (seq_atual == 0 || numero > cresatual [seq_atual - 1 ]) {
+            cresatual [ seq_atual ] = numero ;
+            seq_atual++ ;
+    
+             
+        } else { 
+            if ( seq_atual > maior_seq ) {
+                maior_seq = seq_atual;
+            
+            
+               for (int j = 0 ; j < seq_atual ; j++ ){
+                   seq_cres [j] = cresatual [j] ; 
+                }
+            }
+            seq_atual = 1 ;
+            cresatual [ 0 ] = numero ;
+        }
+    
+            
+    }
+    
+    if (seq_atual > maior_seq ) {
+        maior_seq = seq_atual ; 
+        for (int j = 0; j < seq_atual ; j++ ) {
+            seq_cres [ j ] = cresatual [ j ] ;
+        }
+    }
+     
+    if(maior_seq > 1 ) {
+      printf( "Maior sequência crescente tem tamanho %d , é formado pelos números: \n" , maior_seq); ; 
+      
+      for ( int j = 0 ; j < maior_seq ; j++ ){
+          printf( " %d, " , seq_cres [j] ) ;   
+    
+        }
+        printf("\n");
+    } else {
+        printf("Não há sequência crescente. \n");
+    }    
+    
+    return 0;
+    
+    
+}
+
