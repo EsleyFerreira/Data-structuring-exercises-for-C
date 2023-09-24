@@ -1,0 +1,15 @@
+#include <math.h>
+
+int ehSilencio(short* in, unsigned long length, unsigned short min_level, double min_proportion) {
+    int count_silence = 0;
+
+    for (unsigned long i = 0; i < length; i++) {
+        if (abs(in[i]) <= min_level) {
+            count_silence++;
+        }
+    }
+
+    double proportion = (double)count_silence / length;
+
+    return (proportion >= min_proportion) ? 1 : 0;
+}
