@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+    int idades[20];
+    int soma = 0;
+
+    // Leitura das idades
+    for (int i = 0; i < 20; i++) {
+        printf("Digite a idade da pessoa %d: ", i + 1);
+        scanf("%d", &idades[i]);
+    }
+
+    // Calcula a soma das idades
+    for (int i = 0; i < 20; i++) {
+        soma += idades[i];
+    }
+
+    // Exibe a soma
+    printf("A soma das idades é: %d\n", soma);
+
+    return 0;
+}
