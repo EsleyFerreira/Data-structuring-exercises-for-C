@@ -1,0 +1,71 @@
+#include <stdio.h>
+
+int main() {
+    int idades[20];
+    int soma_idades = 0;
+    float media_idades;
+    int maiores_de_idade = 0;
+    int menores_de_idade = 0;
+    int idade_mais_jovem;
+    int idade_mais_velha;
+    int idades_pares[20];
+    int idades_impares[20];
+    int num_pares = 0;
+    int num_impares = 0;
+
+    // Leitura das idades e cálculos
+    for (int i = 0; i < 20; i++) {
+        printf("Digite a idade da pessoa %d: ", i + 1);
+        scanf("%d", &idades[i]);
+
+        soma_idades += idades[i];
+
+        if (idades[i] >= 18) {
+            maiores_de_idade++;
+        } else {
+            menores_de_idade++;
+        }
+
+        if (i == 0) {
+            idade_mais_jovem = idades[i];
+            idade_mais_velha = idades[i];
+        } else {
+            if (idades[i] < idade_mais_jovem) {
+                idade_mais_jovem = idades[i];
+            }
+            if (idades[i] > idade_mais_velha) {
+                idade_mais_velha = idades[i];
+            }
+        }
+
+        if (idades[i] % 2 == 0) {
+            idades_pares[num_pares++] = idades[i];
+        } else {
+            idades_impares[num_impares++] = idades[i];
+        }
+    }
+
+    media_idades = (float)soma_idades / 20;
+
+    // Exibição dos resultados
+    printf("\nSoma das idades: %d\n", soma_idades);
+    printf("Média das idades: %.2f\n", media_idades);
+    printf("Pessoas maiores de idade: %d\n", maiores_de_idade);
+    printf("Pessoas menores de idade: %d\n", menores_de_idade);
+    printf("Idade do mais jovem: %d\n", idade_mais_jovem);
+    printf("Idade do mais velho: %d\n", idade_mais_velha);
+    
+    printf("Idades pares: ");
+    for (int i = 0; i < num_pares; i++) {
+        printf("%d ", idades_pares[i]);
+    }
+    printf("\n");
+    
+    printf("Idades ímpares: ");
+    for (int i = 0; i < num_impares; i++) {
+        printf("%d ", idades_impares[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
