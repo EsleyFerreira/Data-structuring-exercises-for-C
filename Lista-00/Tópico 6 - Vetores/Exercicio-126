@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_DATES 64
+#define DATE_LENGTH 11
+
+int main() {
+    char dates[MAX_DATES][DATE_LENGTH];
+    int dateCount = 0;
+
+    printf("Digite as datas no formato DD/MM/AAAA. Você pode digitar até %d datas.\n", MAX_DATES);
+
+    while (dateCount < MAX_DATES) {
+        printf("Digite uma data (ou 0/0/0 para encerrar): ");
+        
+        if (scanf("%10s", dates[dateCount]) != 1) {
+            break;
+        }
+
+        if (strcmp(dates[dateCount], "0/0/0") == 0) {
+            break;
+        }
+
+        dateCount++;
+    }
+
+    qsort(dates, dateCount, sizeof(char[DATE_LENGTH]), strcmp);
+
+    printf("\nDatas ordenadas em ordem cronológica:\n");
+    for (int i = 0; i < dateCount; i++) {
+        printf("%s\n", dates[i]);
+    }
+
+    return 0;
+}
+
+
+
